@@ -2,49 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
+// Sets the script to be executed later than all default scripts
+// This is helpful for UI, since other things may need to be initialized before setting the UI
+[DefaultExecutionOrder(1000)]
 public class MenuUIHandler : MonoBehaviour
 {
-    //private string m_playerName;
-    //private string m_Score;
-    public TextMeshProUGUI inputName;
+    public TMP_InputField inputName;
     public TextMeshProUGUI menuScoreText;
 
     // Start is called before the first frame update
     void Start()
     {
-        MainManager.Instance.LoadPlayerAndScore();
+        if (ScoreManager.Instance.playerName != null)
+        {
+            inputName.text = ScoreManager.Instance.playerName;
+        }
         SetScoreText();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(inputName.text);
+
     }
 
     public void StartNew()
     {
+        SetPlayerName();
         SceneManager.LoadScene(0);
-    }
-
-    public void LoadPlayerAndScoreClicked()
-    {
-        MainManager.Instance.LoadPlayerAndScore();
-        //ColorPicker.SelectColor(MainManager.Instance.TeamColor);
     }
 
     void SetScoreText()
     {
-        menuScoreText.text = $"Best score: {MainManager.Instance.NameText.text} : " +
-            $"{MainManager.Instance.ScoreText.text}";
+        menuScoreText.text = $"Best Score : {ScoreManager.Instance.playerName} : {ScoreManager.Instance.score}";
+    }
+
+    void SetPlayerName()
+    {
+        ScoreManager.Instance.playerName = inputName.text;
     }
 
     public void Exit()
