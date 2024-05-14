@@ -70,3 +70,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+/WebGL Builds
+webgl_sharing
+ProjectSettings/Packages/com.unity.connect.share/Settings.json
+ProjectSettings/CommonBurstAotSettings.json
+ProjectSettings/BurstAotSettings_WebGL.json
+connectwebgl.zip

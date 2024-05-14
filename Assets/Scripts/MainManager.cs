@@ -100,6 +100,6 @@ public class MainManager : MonoBehaviour
 
     void BackToMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }

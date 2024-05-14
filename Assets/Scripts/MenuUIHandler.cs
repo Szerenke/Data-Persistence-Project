@@ -26,16 +26,10 @@ public class MenuUIHandler : MonoBehaviour
         SetScoreText();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void StartNew()
     {
         SetPlayerName();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     void SetScoreText()
